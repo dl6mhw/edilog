@@ -1,0 +1,15 @@
+EDILOG 
+
+Einfaches Online Loggen für UKW-Contest mit Erzeugung EDI-Datei
+- Kopf/Logmanagement (Autentification)
+- Grid mit schneller Speicherung und Navigantion
+- etwas Bootstrap
+
+Struktur 
+- Intro --> LogKey
+- Grid
+
+Autification
+- new Log (Key merken an E-Mail schicken)
+
+
