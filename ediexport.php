@@ -60,7 +60,7 @@ while ($row = $result->fetch_row()) {
    # print_r($row);
    $qrg=$row[0];
    $utc=$row[1];
-   $utc=str_replace(":","",$utc); 		
+   $utc=intval(str_replace(":","",$utc)); 		
    #Datum aus Zeit nur für 14 UTC Contest
    if ($utc>1399) $datum=$datum1; else $datum=$datum2;
    if ($utc<1000) $utc="0$utc";

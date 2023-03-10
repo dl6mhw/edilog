@@ -147,7 +147,7 @@ else {
   
 <nav class="navbar navbar-expand-lg navbar-light bg-success">
   <a class="navbar-brand" href="index.php">
-    <img src="warne.png" width="60" height="60" class="d-inline-block align-top" alt="" >
+    <img src="media/warne.png" width="60" height="60" class="d-inline-block align-top" alt="" >
     <span  style="color:#FFF;font-size:200%">Edilog Mar-23</span>
   </a>
 <?php

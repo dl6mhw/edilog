@@ -9,6 +9,13 @@ $tabelle='qso';
 
 ?>
   <!-- Page Content -->
+<script>
+function myFunction() {
+  const element = document.getElementById("content");
+  element.scrollIntoView();
+  console.log('myFunctionScroll');
+}
+</script>
   <div class="container">
 	
     <div class="row">
@@ -25,6 +32,8 @@ $tabelle='qso';
 	    <a href="#" id=update class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Speichern</a>
 	    <a href="#" id=insert class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Neues QSO</a>
 	    <a href="#" id=export class="btn btn-primary btn-sm active" role="button" aria-pressed="true" onclick="window.open('ediexport.php')">EDI erzeugen</a>
+	    <a href="#" id=test class="btn btn-primary btn-sm active" role="button" aria-pressed="true" 
+		onclick="myFunction()">Test Scroll</a>
     	  <label class="text-black">Punkte:</label>
 		  <input size=8 style="width:100px" id=punkte value="0"></input>
 
@@ -34,6 +43,16 @@ $tabelle='qso';
       <div class="col-lg-12">
         <div id="datagrid"></div>
      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+	    <a href="#" id=insert2 class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Neues QSO</a>
+  <div id="content">
+  <p>Some text inside an element.</p>
+  <p>Some text inside an element.</p>
+  <p>Some text inside an element.</p>
+  </div>
+   </div>
     </div>
 	</div>   <!-- Container Page Content -->
 
@@ -250,7 +269,10 @@ function myQuery(suche) {
        
 	   
 		$('#datagrid').append(tData);
-rechne();		
+  rechne();		
+  window.scrollTo(0, document.body.scrollHeight);	    
+  console.log('srcoll nach tData append');
+
 		tInput=$('<input>').attr({value:'hu',id:'huid'});     
 		$('#datagrid2').append(tInput);  
 		$('input').keydown(function(e){
@@ -507,6 +529,9 @@ $('#debug').click(function (e) {
 $('#insert').click(function (e) {
   insertQSO();
 });
+$('#insert2').click(function (e) {
+  insertQSO();
+});
 
 function insertQSO() {
   var tr    = $('tr').last();
@@ -521,7 +546,7 @@ function insertQSO() {
   spalte=1;
   $(clone.find('.grid')).each(function() {
       $(this).keydown(function(e){keyNavigation(e,this);});
-	  console.log('feld:'+this.id);	  
+	  console.log('ins-feld:'+this.id);	  
 	  nnId=nextId+'-'+spalte;
 	  $(this).attr('id',nnId);
 	  spalte++;
@@ -536,10 +561,27 @@ function insertQSO() {
 		  $(this).attr('value',txnr);	
 		  
 	  } else $(this).attr('value','');
-
   });
   tr.after(clone);
+  //7 ist das Call-Feld
+  focusId="#"+nextId+"-7";
+  //alert(focusId);
+  $(focusId).focus();
+  
+  
+  //const element = document.getElementById("z17-6");
+  //element.scrollIntoView();
+  //console.log("FocusId"+focusId);
+  //alert(document.body.scrollHeight);
+  //window.scrollTo(110, 500);	
+  const element = document.getElementById("content");
+  console.log(element.id);
+   
+  element.scrollIntoView();
+  console.log('scroll nach insert');
+  //alert("nux");
   last=0;
+
 };
 
 
